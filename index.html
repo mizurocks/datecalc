@@ -3,38 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>numerology calculator</title>
+    <title>date numerology calculator</title>
     <style>
         body {
             font-family: sans-serif;
             background-color: white;
             text-align: center;
-            padding: 50px;
+            padding: 30px;
             color: #333;
         }
         h1 {
             color: #487CA5;
             text-transform: lowercase;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
         input[type="date"] {
-            padding: 10px;
-            font-size: 16px;
+            padding: 8px;
+            font-size: 14px;
             border: 1px solid #487CA5;
             border-radius: 5px;
             cursor: pointer;
+            width: 180px;
         }
         #numerology-result {
-            font-size: 48px;
+            font-size: 36px;
             font-family: monospace;
             color: #487CA5;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(5px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            margin-top: 10px;
         }
         button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            font-size: 14px;
             color: #487CA5;
             border: 1px solid #487CA5;
             background: transparent;
@@ -49,7 +53,7 @@
     </style>
 </head>
 <body>
-    <h1>numerology calculator</h1>
+    <h1>date numerology calculator</h1>
     <input type="date" id="datePicker">
     <p id="numerology-result"></p>
     <button id="resetButton">reset</button>
@@ -57,7 +61,7 @@
     <script>
         function calculateNumerology(dateValue) {
             let sum = dateValue.replace(/-/g, '').split('').reduce((acc, num) => acc + parseInt(num), 0);
-
+            
             while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
                 sum = sum.toString().split('').reduce((acc, num) => acc + parseInt(num), 0);
             }
@@ -69,7 +73,7 @@
             let sum = calculateNumerology(this.value);
             
             resultElement.style.opacity = '0';
-            resultElement.style.transform = 'translateY(10px)';
+            resultElement.style.transform = 'translateY(5px)';
             
             setTimeout(() => {
                 resultElement.textContent = sum;
